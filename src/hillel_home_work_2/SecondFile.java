@@ -1,7 +1,7 @@
 package hillel_home_work_2;
 
-public class SecondClass {
+public class SecondFile {
     public static void main(String[] args) {
-        System.out.println("Second class");
+        System.out.println("Second file");
     }
 }
