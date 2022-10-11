@@ -1,3 +1,5 @@
+package home_work_3;
+
 public class Employee {
     private String fullName;
     private String jobTitle;
@@ -12,22 +14,56 @@ public class Employee {
         this.age=age;
     }
     public Employee(){
-        this.fullName="Some name";
-        this.jobTitle="Some job title";
-        this.email="someemail@gmail.com";
-        this.phoneNumber="+380630000000";
-        this.age=18;
     }
-    public static void main(String[] args) {
-        Employee viacheslav = new Employee("Korbut Viacheslav",
-                                            "Engineer","minowaman777@gmail.com",
-                                            "+380630517137",31);
-        Employee someEmployee =new Employee();
-        System.out.println(viacheslav);
-        System.out.println(someEmployee);
+
+    public String getFullName() {
+        return fullName;
     }
-    public String toString(){
-        return "Full name: "+fullName+"\nJob title: "+jobTitle+
-                "\nemail: "+email+"\nPhone number: "+phoneNumber+"\nAge: "+age;
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
