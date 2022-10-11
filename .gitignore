@@ -2,4 +2,4 @@
 .git
 out
 /out/
-.iml
+*.iml
