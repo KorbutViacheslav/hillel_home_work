@@ -4,7 +4,7 @@ public abstract class Participant {
     private String name;
     private double maxrun;
     private double maxjump;
-    private boolean overcome;
+    private boolean overcome = true;
 
     public Participant(String name, double maxrun, double maxjump) {
         this.name = name;
@@ -45,25 +45,25 @@ public abstract class Participant {
         this.overcome = overcome;
     }
 
-    public void jump(Let let){
-        if (let.getLength()<getMaxjump()){
-            System.out.println(getName()+" overcame "+let.getClass().getSimpleName()
-                    +" on the length "+let.getLength()+" meters!");
-        }else {
+    public void jump(Let let) {
+        if (let.getLength() < getMaxjump()) {
+            System.out.println(getName() + " overcame " + let.getClass().getSimpleName()
+                    + " on the length " + let.getLength() + " meters!");
+        } else {
             setOvercome(false);
-            System.out.println(getName()+" DON'T over "+let.getClass().getSimpleName()
-                    +" on the length "+let.getLength()+" meters!");
+            System.out.println(getName() + " DON'T over " + let.getClass().getSimpleName()
+                    + " on the length " + let.getLength() + " meters!");
         }
     }
 
-    public void run(Let let){
-        if (let.getLength()<getMaxrun()){
-            System.out.println(getName()+" overcame "+let.getClass().getSimpleName()
-                    +" on the length "+let.getLength()+" meters!");}
-        else {
+    public void run(Let let) {
+        if (let.getLength() < getMaxrun()) {
+            System.out.println(getName() + " overcame " + let.getClass().getSimpleName()
+                    + " on the length " + let.getLength() + " meters!");
+        } else {
             setOvercome(false);
-            System.out.println(getName()+" DON'T over "+let.getClass().getSimpleName()
-                    +" on the length "+let.getLength()+" meters!");
+            System.out.println(getName() + " DON'T over " + let.getClass().getSimpleName()
+                    + " on the length " + let.getLength() + " meters!");
         }
     }
 

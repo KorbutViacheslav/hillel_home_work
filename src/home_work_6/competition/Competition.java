@@ -11,18 +11,18 @@ public class Competition {
 
     public void start() {
         for (Participant participant : participants) {
-            for (int i = 0; i < let.length; i++) {
+            for (Let lets : let) {
                 if (participant.isOvercome()) {
-                    if (let[i] instanceof Treadmill) {
-                        participant.run(let[i]);
-                    } else if (let[i] instanceof Wall) {
-                        participant.jump(let[i]);
+                    if (lets instanceof Treadmill) {
+                        participant.run(lets);
+                    } else if (lets instanceof Wall) {
+                        participant.jump(lets);
                     }
-                }else {
-                        System.out.println(participant.getName()+" Eliminated from competition!");
-                        break;
-                    }
+                } else {
+                    System.out.println(participant.getName() + " Eliminated from competition!");
+                    break;
                 }
             }
         }
+    }
 }
