@@ -1,11 +1,10 @@
 package home_work_5;
 
 public class Cat extends Animal {
-    private static int count;
 
     public Cat() {
-        count++;
-        System.out.println("Created cat(s): " + count);
+        getInstanceCount();
+        System.out.println("Created cat(s): " + getInstanceCount());
     }
 
     @Override
@@ -13,7 +12,7 @@ public class Cat extends Animal {
         if (maxdis <= 200) {
             System.out.println("Cat run " + maxdis);
         } else {
-            System.out.println("Cat can not running 200 meters(((");
+            System.out.println("Cat can not running more 200 meters(((");
         }
     }
 

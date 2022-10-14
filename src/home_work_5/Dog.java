@@ -1,11 +1,10 @@
 package home_work_5;
 
 public class Dog extends Animal {
-    private static int count;
 
     public Dog() {
-        count++;
-        System.out.println("Created dog(s): " + count);
+        getInstanceCount();
+        System.out.println("Created dog(s): " + getInstanceCount());
     }
 
     @Override
