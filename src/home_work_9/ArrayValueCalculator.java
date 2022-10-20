@@ -37,7 +37,8 @@ public class ArrayValueCalculator {
     }
 
     public static boolean isCorrectmassive(String[][] s, int col, int row) {
-        if (s.length != col) return false;
+        if (s.length != col)
+            return false;
         for (int i = 0; i < s.length; i++) {
             if (s[i].length != row) {
                 return false;
