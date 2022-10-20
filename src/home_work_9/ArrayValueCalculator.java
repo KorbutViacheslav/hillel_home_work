@@ -1,7 +1,7 @@
 package home_work_9;
 
 public class ArrayValueCalculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ArraySizeException, ArrayDataException {
         String numbers[][] = {{"3", "3", "3", "3"},
                 {"3", "3", "3", "3"},
                 {"3", "3", "3", "3"},
@@ -16,27 +16,19 @@ public class ArrayValueCalculator {
                 {"3", "3", "3", "3"}};
         System.out.println("Summa numbers in array: " + doCalc(numbers));
         System.out.println("Trying to display the wrong value of the array:");
-        try {
-            System.out.println("Summa numbers in array: " + doCalc(numbersIncorrectValue));
-        } catch (ArrayDataException e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("Summa numbers in array: " + doCalc(numbersIncorrectSize));
-        }
+        System.out.println("Summa numbers in array: " + doCalc(numbersIncorrectValue));
     }
 
-    public static int doCalc(String numbersString[][]) throws ArraySizeException {
-        int[][] numbersInteger = new int[numbersString.length][numbersString[0].length];
+    public static int doCalc(String numbersString[][]) throws ArraySizeException, ArrayDataException {
         int sum = 0;
-        if (numbersString.length == 4 && numbersString[0].length == 4) {
+        if (isCorrectmassive(numbersString, 4, 4)) {
             for (int i = 0; i < numbersString.length; i++) {
                 for (int j = 0; j < numbersString[0].length; j++) {
                     try {
-                        numbersInteger[i][j] = digitSum(numbersString[i][j]);
-                    } catch (NumberFormatException e) {
+                        sum += Integer.parseInt(numbersString[i][j]);
+                    } catch (Exception e) {
                         throw new ArrayDataException("Incorrect value in " + "Line: №" + (i + 1) + " Colum: №" + (j + 1));
                     }
-                    sum += numbersInteger[i][j];
                 }
             }
         } else throw new ArraySizeException("Arrays must have 4x4 size.");
@@ -44,7 +36,13 @@ public class ArrayValueCalculator {
         return sum;
     }
 
-    private static int digitSum(String s) {
-        return Integer.parseInt(String.valueOf(s));
+    public static boolean isCorrectmassive(String[][] s, int col, int row) {
+        if (s.length != col) return false;
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].length != row) {
+                return false;
+            }
+        }
+        return true;
     }
 }
