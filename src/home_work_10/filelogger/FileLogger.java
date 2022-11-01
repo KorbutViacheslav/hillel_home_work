@@ -1,18 +1,21 @@
-package home_work_10;
+package home_work_10.filelogger;
+
+import home_work_10.LoggingLevel;
+import home_work_10.log_abstract.AbstractFileLogger;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class FileLogger {
+public class FileLogger extends AbstractFileLogger {
 
-    private final FileLoggerConfiguration fileLoggerConfiguration;
-    private final String currentPath;
+    private FileLoggerConfiguration fileLoggerConfiguration;
+    private String currentPath;
+    private static int countFile = 1;
 
     public FileLogger(FileLoggerConfiguration fileLoggerConfiguration) {
+        super(fileLoggerConfiguration);
         this.fileLoggerConfiguration = fileLoggerConfiguration;
         currentPath = fileLoggerConfiguration.getPath() + String.format("Log_%s.txt", getDateTimeNow());
 
@@ -32,8 +35,11 @@ public class FileLogger {
 
     private void checkSizeCurrentFile(String message) {
         long currentFileSize = new File(currentPath).length();
-        if (message.getBytes().length + currentFileSize >= fileLoggerConfiguration.getMaxSize()) {
-            throw new FileMaxSizeReachedException(fileLoggerConfiguration.getMaxSize(), currentFileSize, currentPath);
+        long currentMessage = message.getBytes().length;
+        if (currentMessage + currentFileSize >= fileLoggerConfiguration.getMaxSize()) {
+            new File(currentPath = fileLoggerConfiguration.getPath() + String.format("Log_%s_%s.txt", getDateTimeNow(), countFile++));
+            System.out.println("Old log file is filled! Created new log file... №" + (countFile - 1));
+
         }
     }
 
@@ -47,18 +53,13 @@ public class FileLogger {
         }
     }
 
-    private String messageTemplate(String message) {
-        return String.format(fileLoggerConfiguration.getFormat(),
-                "[" + getDateTimeNow() + "]",
-                "[" + fileLoggerConfiguration.getLoggingLevel() + "]",
-                "Message",
-                "[" + message + "]"
-        );
+    @Override
+    public String getDateTimeNow() {
+        return super.getDateTimeNow();
     }
 
-    public String getDateTimeNow() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd hh.mm.ss");
-        return now.format(formatter);
+    @Override
+    public String messageTemplate(String message) {
+        return super.messageTemplate(message);
     }
 }
