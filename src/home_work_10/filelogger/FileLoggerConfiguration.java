@@ -9,12 +9,11 @@ public class FileLoggerConfiguration extends Configuration {
     private String path;
     private long maxSize;
 
-    public FileLoggerConfiguration(LoggingLevel level,String format, String path, long maxSize) {
-        super(level,format,path,maxSize);
-        this.loggingLevel=level;
-        this.format=format;
-        this.path=path;
-        this.maxSize=maxSize;
+    public FileLoggerConfiguration(LoggingLevel level, String format, String path, long maxSize) {
+        this.loggingLevel = level;
+        this.format = format;
+        this.path = path;
+        this.maxSize = maxSize;
     }
 
     public String getPath() {

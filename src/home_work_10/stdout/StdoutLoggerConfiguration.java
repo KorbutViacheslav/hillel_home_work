@@ -4,33 +4,17 @@ import home_work_10.LoggingLevel;
 import home_work_10.logAbstract.Configuration;
 
 public class StdoutLoggerConfiguration extends Configuration {
-    private LoggingLevel loggingLevel;
-    private String format;
-    private String path;
-    private long maxSize;
-    public StdoutLoggerConfiguration(LoggingLevel loggingLevel, String format, String path, long maxSize) {
-        super(loggingLevel, format, path, maxSize);
-    }
+    private LoggingLevel loggingLevel=LoggingLevel.INFO;
+    private String format="[%s] [%s] Message: [%s]";
+    private long maxSize=100;
 
     @Override
     public LoggingLevel getLoggingLevel() {
-        return super.getLoggingLevel();
+        return loggingLevel;
     }
 
     @Override
     public String getFormat() {
-        return super.getFormat();
+        return format;
     }
-
-
-    @Override
-    public String getPath() {
-        return super.getPath();
-    }
-
-    @Override
-    public long getMaxSize() {
-        return super.getMaxSize();
-    }
-
 }

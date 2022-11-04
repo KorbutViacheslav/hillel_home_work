@@ -15,7 +15,6 @@ public class FileLogger extends Logger {
     private static int countFile = 1;
 
     public FileLogger(FileLoggerConfiguration fileLoggerConfiguration) {
-        super(fileLoggerConfiguration);
         this.fileLoggerConfiguration = fileLoggerConfiguration;
         currentPath = fileLoggerConfiguration.getPath() + String.format("Log_%s.txt", getDateTimeNow());
 
@@ -58,8 +57,8 @@ public class FileLogger extends Logger {
         return super.getDateTimeNow();
     }
 
-    @Override
     public String messageTemplate(String message) {
-        return super.messageTemplate(message);
+        return String.format(fileLoggerConfiguration.getFormat(),
+                getDateTimeNow(), fileLoggerConfiguration.getLoggingLevel(), message);
     }
 }

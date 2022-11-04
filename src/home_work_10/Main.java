@@ -4,6 +4,7 @@ import home_work_10.filelogger.FileLogger;
 import home_work_10.filelogger.FileLoggerConfiguration;
 import home_work_10.filelogger.FileLoggerConfigurationLoader;
 import home_work_10.stdout.StdoutLogger;
+import home_work_10.stdout.StdoutLoggerConfiguration;
 import home_work_10.stdout.StdoutLoggerConfigurationLoader;
 
 public class Main {

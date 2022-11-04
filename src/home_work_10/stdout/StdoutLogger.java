@@ -1,13 +1,20 @@
 package home_work_10.stdout;
 
+import home_work_10.LoggingLevel;
 import home_work_10.logAbstract.Logger;
-import home_work_10.logAbstract.Configuration;
 
 public class StdoutLogger extends Logger {
+    private StdoutLoggerConfiguration stdoutLoggerConfiguration = new StdoutLoggerConfiguration();
+
+    public StdoutLogger(StdoutLoggerConfiguration stdoutLoggerConfiguration) {
+
+    }
 
     @Override
     public void debug(String message) {
-        System.out.println(messageTemplate(message));
+        if (!stdoutLoggerConfiguration.getLoggingLevel().equals(LoggingLevel.INFO)) {
+            System.out.println(messageTemplate(message));
+        }
     }
 
     @Override
@@ -15,17 +22,13 @@ public class StdoutLogger extends Logger {
         System.out.println(messageTemplate(message));
     }
 
-    @Override
     public String getDateTimeNow() {
+
         return super.getDateTimeNow();
     }
 
-    public StdoutLogger(Configuration configuration) {
-        super(configuration);
-    }
-
-    @Override
     public String messageTemplate(String message) {
-        return super.messageTemplate(message);
+        return String.format(stdoutLoggerConfiguration.getFormat(),
+                getDateTimeNow(), stdoutLoggerConfiguration.getLoggingLevel(), message);
     }
 }
