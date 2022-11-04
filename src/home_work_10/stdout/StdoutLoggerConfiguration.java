@@ -1,9 +1,9 @@
 package home_work_10.stdout;
 
 import home_work_10.LoggingLevel;
-import home_work_10.log_abstract.AbstractFileLoggerConfigurator;
+import home_work_10.logAbstract.Configuration;
 
-public class StdoutLoggerConfiguration extends AbstractFileLoggerConfigurator {
+public class StdoutLoggerConfiguration extends Configuration {
     private LoggingLevel loggingLevel;
     private String format;
     private String path;

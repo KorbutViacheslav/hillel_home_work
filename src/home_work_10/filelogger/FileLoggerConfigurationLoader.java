@@ -1,11 +1,11 @@
 package home_work_10.filelogger;
 
-import home_work_10.log_abstract.AbstractFileLoggerConfigurationLoader;
-import home_work_10.log_abstract.AbstractFileLoggerConfigurator;
+import home_work_10.logAbstract.ConfigurationLoader;
+import home_work_10.logAbstract.Configuration;
 
-public class FileLoggerConfigurationLoader extends AbstractFileLoggerConfigurationLoader {
+public class FileLoggerConfigurationLoader extends ConfigurationLoader {
     @Override
-    public AbstractFileLoggerConfigurator load() {
+    public Configuration load() {
         return super.load();
     }
 }

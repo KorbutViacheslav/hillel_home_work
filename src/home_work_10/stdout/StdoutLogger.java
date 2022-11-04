@@ -1,9 +1,9 @@
 package home_work_10.stdout;
 
-import home_work_10.log_abstract.AbstractFileLogger;
-import home_work_10.log_abstract.AbstractFileLoggerConfigurator;
+import home_work_10.logAbstract.Logger;
+import home_work_10.logAbstract.Configuration;
 
-public class StdoutLogger extends AbstractFileLogger {
+public class StdoutLogger extends Logger {
 
     @Override
     public void debug(String message) {
@@ -20,8 +20,8 @@ public class StdoutLogger extends AbstractFileLogger {
         return super.getDateTimeNow();
     }
 
-    public StdoutLogger(AbstractFileLoggerConfigurator abstractFileLoggerConfigurator) {
-        super(abstractFileLoggerConfigurator);
+    public StdoutLogger(Configuration configuration) {
+        super(configuration);
     }
 
     @Override

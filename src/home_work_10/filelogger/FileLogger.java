@@ -1,14 +1,14 @@
 package home_work_10.filelogger;
 
 import home_work_10.LoggingLevel;
-import home_work_10.log_abstract.AbstractFileLogger;
+import home_work_10.logAbstract.Logger;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileLogger extends AbstractFileLogger {
+public class FileLogger extends Logger {
 
     private FileLoggerConfiguration fileLoggerConfiguration;
     private String currentPath;

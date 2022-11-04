@@ -1,9 +1,9 @@
 package home_work_10.filelogger;
 
 import home_work_10.LoggingLevel;
-import home_work_10.log_abstract.AbstractFileLoggerConfigurator;
+import home_work_10.logAbstract.Configuration;
 
-public class FileLoggerConfiguration extends AbstractFileLoggerConfigurator {
+public class FileLoggerConfiguration extends Configuration {
     private LoggingLevel loggingLevel;
     private String format;
     private String path;

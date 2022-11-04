@@ -1,4 +1,4 @@
-package home_work_10.log_abstract;
+package home_work_10.logAbstract;
 
 import home_work_10.filelogger.FileLoggerConfiguration;
 import home_work_10.LoggingLevel;
@@ -8,11 +8,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-abstract public class AbstractFileLoggerConfigurationLoader {
+abstract public class ConfigurationLoader {
     private String path = "." + File.separator + "src" + File.separator + "home_work_10" + File.separator + "configLogger.properties";
     private File configLogger = new File(path);
 
-    public AbstractFileLoggerConfigurator load() {
+    public Configuration load() {
         try (FileReader reader = new FileReader(configLogger)) {
             Properties p = new Properties();
             p.load(reader);
