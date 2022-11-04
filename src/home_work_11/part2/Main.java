@@ -1,12 +1,14 @@
 package home_work_11.part2;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 
 public class Main {
 
     public static void main(String[] args) {
         Semaphore semaphore = new Semaphore(3);
-        ThreadSafeList<Person> list = new ThreadSafeList<>();
+        List<Person> list = new CopyOnWriteArrayList<>();
         list.add(new Person(30, "Slava"));
         list.add(new Person(40, "Alina"));
         list.add(new Person(20, "Kolya"));
