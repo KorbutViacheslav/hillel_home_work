@@ -8,6 +8,7 @@ public class Main {
         petrolStation.doRefuel(30);
         petrolStation.doRefuel(20);
         petrolStation.doRefuel(50);
+        petrolStation.doRefuel(10);
 
     }
 }
