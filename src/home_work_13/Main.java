@@ -11,9 +11,9 @@ public class Main {
             1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 6, 7, 8, 9));
 
     public static void main(String[] args) {
-        countOccurance(list, "apple");
+        /*countOccurance(list, "apple");
         System.out.println("It was array: " + Arrays.toString(array) + "\nBecame list: " + toLis(array));
-        System.out.println("SetList: " + findUnique(findUniqueList));
+        System.out.println("SetList: " + findUnique(findUniqueList));*/
         calcOccurance(list);
         System.out.println(findOccurance(list));
 
@@ -33,33 +33,23 @@ public class Main {
         return new ArrayList<>(List.of(array));
     }
 
-    public static <T> Set<T> findUnique(List<Integer> s) {
-        return new LinkedHashSet(s);
+    public static <T> List<T> findUnique(List<Integer> s) {
+        return (List<T>) new ArrayList<>(new HashSet<>(s));
+
     }
 
-    public static void calcOccurance(ArrayList<String> list) {
-        Set<String> setWords = new TreeSet<>();
-        for (String word : list) {
-            int countWord = 0;
-            for (String ss : list) {
-                if (ss.equals(word))
-                    countWord++;
-            }
-            String currentWord = String.format("%s: %s", word, countWord);
-            setWords.add(currentWord);
+    public static void calcOccurance(List<String> list) {
+        Map<String, Integer> mapWords = new HashMap<>();
+        for (String s : list) {
+            mapWords.put(s, mapWords.getOrDefault(s, 0) + 1);
         }
-        System.out.println(setWords);
+        System.out.println(mapWords);
     }
 
-    public static List<String> findOccurance(ArrayList<String> list) {
-        List<String> listWords = new ArrayList<>();
+    public static HashMap<String,Integer> findOccurance(List<String> list) {
+        HashMap<String,Integer> listWords = new HashMap<>();
         for (String word : list) {
-            int countWord = 0;
-            for (String ss : list) {
-                if (ss.equals(word)) countWord++;
-            }
-            String wor = String.format("{Name: \"%s\", Occurrence: %s}\n", word, countWord);
-            listWords.add(wor);
+            listWords.put(word,Collections.frequency(list,word));
         }
         return listWords;
     }

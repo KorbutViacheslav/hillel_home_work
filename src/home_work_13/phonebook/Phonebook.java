@@ -1,8 +1,7 @@
 package home_work_13.phonebook;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Phonebook {
@@ -16,10 +15,8 @@ public class Phonebook {
         phonebook.add(new Recording("Roma", "11111"));
 
         System.out.println(find("Alex"));
-        List<Recording> rec = findAll("Roma");
-        for (Recording recording : rec) {
-            System.out.println(recording);
-        }
+        HashMap<Recording, String> rec = findAll("Roma");
+        System.out.println(rec);
     }
 
     public static void add(Recording recording) {
@@ -35,8 +32,8 @@ public class Phonebook {
         return null;
     }
 
-    public static List<Recording> findAll(String name) {
-        ArrayList<Recording> list = new ArrayList<>();
+    public static HashMap<Recording, String> findAll(String name) {
+        /*ArrayList<Recording> list = new ArrayList<>();
         for (Recording current : book) {
             if (current.getName().equals(name)) {
                 list.add(current);
@@ -46,6 +43,19 @@ public class Phonebook {
             return null;
         } else {
             return list;
+        }*/
+        //Optional with a HashMap
+        HashMap<Recording, String> mapRec = new HashMap<>();
+        for (Recording r : book) {
+            if (r.getName().equals(name)) {
+                mapRec.put(r, name);
+            }
         }
+        if (mapRec.isEmpty()) {
+            return null;
+        } else {
+            return mapRec;
+        }
+
     }
 }
