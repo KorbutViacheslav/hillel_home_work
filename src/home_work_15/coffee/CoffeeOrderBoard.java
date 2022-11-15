@@ -18,18 +18,16 @@ public class CoffeeOrderBoard {
                 + order.getOrderName());
     }
 
-    public void deliver() {
-        System.out.println("Order: "
-                + orderList.poll()
-                + " is done!");
+    public Order deliver() {
+        System.out.println(orderList.element() + " is done!");
+        return orderList.poll();
     }
 
-    public void deliver(int orderNumber) {
-        System.out.println("Order [Num: "
-                + search(orderNumber).getOrderNumber()
-                + "|Name: " + search(orderNumber).getOrderName()
-                + "] is ready earlier!");
-        orderList.remove(search(orderNumber));
+    public Order deliver(int orderNumber) {
+        Order o = search(orderNumber);
+        System.out.println(o + " is ready earlier!");
+        orderList.remove(o);
+        return o;
     }
 
     public void draw() {
@@ -41,6 +39,7 @@ public class CoffeeOrderBoard {
         for (Order o : orderList) {
             if (o.getOrderNumber() == a) {
                 order = o;
+                break;
             }
         }
         return order;
