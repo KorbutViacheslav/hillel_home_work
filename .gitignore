@@ -1,7 +1,6 @@
 .idea
 .git
+.draft
 out
 /out/
 *.iml
-Draft.java
-Draft2.java
