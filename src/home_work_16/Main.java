@@ -22,8 +22,7 @@ public class Main {
         theCheapestCategory(productList).forEach(System.out::println);
         System.out.println("\nFirst three books in list:");
         lastThreeProducts(productList).forEach(System.out::println);
-        System.out.println("\nFilter by data,type and price:");
-        addYearTypeBookPrice(productList).forEach(System.out::println);
+        System.out.println("\nFilter by data,type and price sum price: \n$" + addYearTypeBookPrice(productList));
         System.out.println("\nSorting products by type in the MAP:");
         toMap(productList).forEach((type, list) -> {
             System.out.println(type);
@@ -43,13 +42,14 @@ public class Main {
     }
 
     public static List<Product> theCheapestCategory(List<Product> list) {
-        if (list.isEmpty()) {
-            throw new NoSuchElementException("List is empty!");
-        }
-        return list.stream().sorted((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()))
+        List<Product> cheapest = list.stream().sorted(Main::compare)
                 .filter(product -> product.getType() == TypeOfProduct.BOOK)
                 .limit(1)
                 .collect(Collectors.toList());
+        if (cheapest.isEmpty()) {
+            throw new NoSuchElementException("List is empty!");
+        } else
+            return cheapest;
     }
 
     public static List<Product> lastThreeProducts(List<Product> list) {
@@ -59,17 +59,21 @@ public class Main {
                 .collect(Collectors.toList());
     }
 
-    public static List<Product> addYearTypeBookPrice(List<Product> list) {
+    public static double addYearTypeBookPrice(List<Product> list) {
         LocalDate limitYear = LocalDate.of(2022, Month.JANUARY, 1);
-        return list.stream().sorted(Comparator.comparing(Product::getDateTime))
+        List<Product> l = list.stream().sorted(Comparator.comparing(Product::getDateTime))
                 .filter(product -> product.getType() == TypeOfProduct.BOOK
                         && product.getPrice() < 75
-                        && product.getDateTime().isAfter(limitYear))
-                .collect(Collectors.toList());
+                        && product.getDateTime().isAfter(limitYear)).toList();
+        return l.stream().mapToDouble(Product::getPrice).sum();
     }
 
     public static Map<TypeOfProduct, List<Product>> toMap(List<Product> list) {
         return list.stream().collect(Collectors.groupingBy(Product::getType));
+    }
+
+    private static int compare(Product o1, Product o2) {
+        return (int) (o1.getPrice() - o2.getPrice());
     }
 
 }
