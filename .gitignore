@@ -1,6 +1,7 @@
 .idea
 .git
 .draft
+/draft/
 out
 /out/
 *.iml
