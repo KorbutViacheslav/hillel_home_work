@@ -1,9 +1,5 @@
 package home_work_18;
 
-public class Fruit {
-    private float weight;
-
-    public float getWeight() {
-        return weight;
-    }
+public abstract class Fruit {
+    abstract float getWeight();
 }
