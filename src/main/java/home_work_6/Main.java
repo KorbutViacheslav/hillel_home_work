@@ -1,7 +1,5 @@
 package home_work_6;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         GeometricFigure[] array = {new Triangle(), new Circle(), new Square()};
