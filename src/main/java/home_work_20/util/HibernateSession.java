@@ -8,7 +8,7 @@ import org.hibernate.cfg.Environment;
 
 import java.util.Properties;
 
-public class HibernateUtil {
+public class HibernateSession {
     private static SessionFactory sessionFactory;
 
     public static SessionFactory getSessionFactory() {
@@ -22,7 +22,6 @@ public class HibernateUtil {
                 properties.put(Environment.PASS, "12345");
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL10Dialect");
                 properties.put(Environment.SHOW_SQL, "true");
-                properties.put(Environment.HBM2DDL_AUTO, "update");
 
                 configuration.setProperties(properties);
                 configuration.addAnnotatedClass(Student.class);
