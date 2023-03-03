@@ -14,5 +14,6 @@ public class Main {
         daoStudentImplementation.updateStudent(newStudent);
         daoStudentImplementation.getAllStudent().forEach(System.out::println);
         daoStudentImplementation.deleteStudent(3L);
+        daoStudentImplementation.getAllStudent().forEach(System.out::println);
     }
 }
