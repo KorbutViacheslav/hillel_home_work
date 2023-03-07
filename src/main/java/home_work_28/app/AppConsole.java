@@ -2,9 +2,9 @@ package home_work_28.app;
 
 import home_work_28.cart.Cart;
 import home_work_28.config.Config;
+import home_work_28.product.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 public class AppConsole {
@@ -13,14 +13,15 @@ public class AppConsole {
 
     public void startMenu() {
         System.out.println("Starting menu...");
+        System.out.println("Enter one of the teams:");
         printMenu();
         while (true) {
             System.out.println("Enter new command...");
             String choice = scanner();
             switch (choice) {
-                case "add":
+                case "add" -> {
                     System.out.println("Enter ID product what your want added.");
-                    System.out.println("1-Coca-cola\n2-Beer\n3-Wather");
+                    System.out.println("1-Coca-cola\n2-Beer\n3-Water");
                     String productID = scanner();
                     if (isNumeric(productID)) {
                         cart.addProduct(Integer.parseInt(productID));
@@ -28,9 +29,8 @@ public class AppConsole {
                     } else {
                         System.out.println("Incorrect ID");
                     }
-
-                    break;
-                case "delete":
+                }
+                case "delete" -> {
                     System.out.println("What product by ID your want delete?");
                     System.out.println("Your cart-list: " + cart.getProductList());
                     String productId = scanner();
@@ -38,35 +38,35 @@ public class AppConsole {
                         cart.deleteProduct(Integer.parseInt(productId));
                         System.out.println("Deleted product with id=" + productId);
                     } else {
-                        System.out.println("Incorrect ID");
+                        System.out.println("Incorrect product ID");
                     }
-                    break;
-                case "cart":
+                }
+                case "cart" -> {
+                    System.out.println("Your cart-list: ");
                     cart.getProductList().forEach(System.out::println);
-                    return;
-                case "finish":
+                }
+                case "finish" -> {
                     System.out.println("Program is over!");
                     return;
-                default:
-                    System.out.println("Your enter incorrect command");
-                    break;
+                }
+                default -> System.out.println("Your enter incorrect command");
             }
         }
     }
 
-    public String scanner() {
-        Scanner s = new Scanner(System.in);
-        return s.nextLine();
+    private String scanner() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     private void printMenu() {
-        System.out.println("add");
-        System.out.println("delete");
-        System.out.println("cart");
-        System.out.println("finish");
+        System.out.println("add - Add the product to your cart.");
+        System.out.println("deleted - Delete the product from your cart.");
+        System.out.println("cart - show all the product from your cart");
+        System.out.println("finish - finish work of program.");
     }
 
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         try {
             double d = Double.parseDouble(str);
         } catch (NumberFormatException nfe) {

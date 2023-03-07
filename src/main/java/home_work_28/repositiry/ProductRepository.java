@@ -39,7 +39,8 @@ public class ProductRepository {
     public void removeProduct(Product product) {
         productList.remove(product);
     }
-    public void addProduct(Product product){
+
+    public void addProduct(Product product) {
         productList.add(product);
     }
 }
